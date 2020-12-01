@@ -1,0 +1,38 @@
+# ignore all logs
+*.log
+machine_learning_projects/license_plates_detector/log/
+
+# training_checkpoints
+/tf2_nlp_tutorial/training_checkpoints
+
+# datasets
+/megacourse/lesson1/datasets
+
+# models
+/megacourse/lesson1/models
+
+# cache
+__pycache__
+
+# desktop
+.vscode
+*.ipynb
+
+# django
+db.sqlite3
+
+# data, cf, weights
+*.h5
+*.cfg
+*.weights
+*.names
+*.zip
+yolov3.tf.*
+small_projects/opencv/advanced/text_recognition/myData
+small_projects/opencv/advanced/traffic_sign_classification/myData
+machine_learning_projects/license_plates_detector/dataset
+machine_learning_projects/multiple_object_detection/weights/checkpoint
+small_projects/handwritten_equations/extracted_images
+
+# reference tools
+tools/
