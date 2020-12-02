@@ -33,6 +33,3 @@ small_projects/opencv/advanced/traffic_sign_classification/myData
 machine_learning_projects/license_plates_detector/dataset
 machine_learning_projects/multiple_object_detection/weights/checkpoint
 small_projects/handwritten_equations/extracted_images
-
-# reference tools
-tools/
