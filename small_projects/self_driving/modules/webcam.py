@@ -1,14 +1,17 @@
+# for using webcam to get images
 import cv2
 
-frame_width = 640
-frame_height = 480
-
 cap = cv2.VideoCapture(0)
-cpa.set(3, frame_width)
-cap.set(4, frame_height)
 
-while True:
+def getImg(display=False, size=[480,240]):
     _, img = cap.read()
-    cv2.imshow("RES", img)
-    if cv2.waitKey(1) and 0xFF == ord('q'):
-        break
+    img = cv2.resize(img,( size[0], size[1]))
+    
+    if display:
+        cv2.imshow('IMG',img)
+    
+    return img
+
+if __name__ == '__main__':
+    while True:
+        img = getImg(True)
