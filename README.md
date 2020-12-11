@@ -28,4 +28,4 @@ What I learn in my spare time and What I'm interested in with the help on variou
     -[x] A* path planning project  
     -[x] OpenCV: Finished serveral small scale project using OpenCV.  
     -[-] Handwritten Equations to LaTex: Migrating to TF2 version, meanwhile seeking datasets.   
-    -[-] Self Driving Car using OpenCV and Neural Networks   
+    -[-] Self Driving Car using OpenCV and Neural Networks: debugging   
