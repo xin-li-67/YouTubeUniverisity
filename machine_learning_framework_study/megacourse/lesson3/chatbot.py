@@ -1,8 +1,8 @@
 # tflearn only supports tf1.x, can't run on 2.x
-
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
+nltk.download('punkt')
 
 import numpy
 import tflearn

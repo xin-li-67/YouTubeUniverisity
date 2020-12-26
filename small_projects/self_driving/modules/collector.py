@@ -1,32 +1,47 @@
-# for triggering the modules
-import webcam as wm
-import data as dm
-import joystick as jm
-import motor as mm
-
+# for collecting images and log in a seperate folder for next step training
+import os
 import cv2
-from time import sleep
+import pandas as pd
+from datetime import datetime
 
-maxThrottle = 0.25
-motor = mm.Motor(2, 3, 4, 17, 22, 27)
-record = 0
+global imgList, steeringList
+countFolder = 0
+count = 0
+imgList = []
+steeringList = []
 
-while True:
-    joyval = jm.getJS()
-    steering = joyval['axis1']
-    throttle = joyval['o'] * maxThrottle
+myDirectory = os.path.join(os.getcwd(), '../data_collected')
 
-    if joyval['share'] == 1:
-        if record ==0: 
-            print('Recording Started ...')
-        record +=1
-        sleep(0.300)
-    if record == 1:
-        img = wm.getImg(True, size=[240,120])
-        dm.saveData(img, steering)
-    elif record == 2:
-        dm.saveLog()
-        record = 0
+# CREATE A NEW FOLDER BASED ON THE PREVIOUS FOLDER COUNT
+while os.path.exists(os.path.join(myDirectory, f'IMG{str(countFolder)}')):
+        countFolder += 1
 
-    motor.move(throttle, -steering)
-    cv2.waitKey(1)
+newPath = myDirectory +"/IMG"+str(countFolder)
+os.makedirs(newPath)
+
+def saveData(img, steering):
+    global imgList, steeringList
+    now = datetime.now()
+    timestamp = str(datetime.timestamp(now)).replace('.', '')
+    filename = os.path.join(newPath, f'Image_{timestamp}.jpg')
+    cv2.imwrite(filename, img)
+    imgList.append(filename)
+    steeringList.append(steering)
+
+def saveLog():
+    global imgList, steeringList
+    rawData = {'Image': imgList, 'Steering': steeringList}
+    df = pd.DataFrame(rawData)
+    df.to_csv(os.path.join(myDirectory, f'log_{str(countFolder)}.csv'), index=False, header=False)
+
+    print('Log Saved')
+    print('Total Images: ', len(imgList))
+
+if __name__ == '__main__':
+    cap = cv2.VideoCapture(0)
+    for x in range(10):
+        _, img = cap.read()
+        saveData(img, 0.5)
+        cv2.waitKey(1)
+        cv2.imshow("Image", img)
+    saveLog()
