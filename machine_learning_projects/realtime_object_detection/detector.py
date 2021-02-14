@@ -45,7 +45,7 @@ def detection(outputs, img):
 
 while True:
     _, img = cap.read()
-    blob = cv2.dnn.blobFromImage(img, 1 / 255, (whT, whT), [0, 0, 0], swapRB=True, crop=False)
+    blob = cv2.dnn.blobFromImage(img, 1/255, (whT,whT), [0,0,0], swapRB=True, crop=False)
     net.setInput(blob)
     
     layersNames = net.getLayerNames()
