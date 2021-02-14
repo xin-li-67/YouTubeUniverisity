@@ -4,7 +4,7 @@ astroid @ file:///C:/ci/astroid_1592487315634/work
 attrs==19.3.0
 beautifulsoup4==4.9.1
 black==19.10b0
-bleach==3.1.5
+bleach==3.3.0
 certifi==2020.6.20
 cffi==1.14.0
 chardet==3.0.4
