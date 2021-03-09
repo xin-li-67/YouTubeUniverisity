@@ -24,8 +24,8 @@ What I learn in my spare time and What I'm interested in with the help on variou
 5. Coding&Algorithms small projects:  
     -[x] sudoku: sudoku algorithm implementation with and without a GUI.  
     -[x] Face detection project (opencv): Finished in the OpenCV intermediate level collection.  
-    -[-] Realtime parking lot detector (opencv & mask r-cnn): Migrating to TF2, meanwhile studying on creating a YoLo version.  
+    -[-] Realtime parking lot detector (opencv & mask r-cnn): Migrating to TF2, meanwhile studying on creating a YOLO version.  
     -[x] A* path planning project  
     -[x] OpenCV: Finished serveral small scale project using OpenCV.  
-    -[-] Handwritten Equations to LaTex: Migrating to TF2 version, meanwhile seeking datasets.   
-    -[-] Self Driving Car using OpenCV and Neural Networks: debugging   
+    -[x] ~~Handwritten Equations to LaTex: Migrating to TF2 version, meanwhile failed to find appropriate datasets.~~   
+    -[x] Self Driving Car using OpenCV and Neural Networks: Finished the Image Processing solution, working on NN solution.   
