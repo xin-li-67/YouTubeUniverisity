@@ -22,7 +22,6 @@ What I learn in my spare time and What I'm interested in with the help on variou
     - [x] xinsite: Personal reading notes post blog which hosted on Heroku (DONE) and Google Cloud Platform (On-going).  
     - [ ] Personal Portfolio: My personal full stack website on Heroku with access to GitHub, etc.  
 5. Coding&Algorithms small projects:  
-<<<<<<< HEAD
     -[x] sudoku: sudoku algorithm implementation with and without a GUI.  
     -[x] Face detection project (opencv): Finished in the OpenCV intermediate level collection.  
     -[-] Realtime parking lot detector (opencv & mask r-cnn): Migrating to TF2, meanwhile studying on creating a YOLO version.  
@@ -30,12 +29,3 @@ What I learn in my spare time and What I'm interested in with the help on variou
     -[x] OpenCV: Finished serveral small scale project using OpenCV.  
     -[x] ~~Handwritten Equations to LaTex: Migrating to TF2 version, meanwhile failed to find appropriate datasets.~~   
     -[x] Self Driving Car using OpenCV and Neural Networks: Finished the Image Processing solution, working on NN solution.   
-=======
-    - [x] sudoku: sudoku algorithm implementation with and without a GUI.  
-    - [x] Face detection project (opencv): Finished in the OpenCV intermediate level collection.  
-    - [ ] Realtime parking lot detector (opencv & mask r-cnn): Migrating to TF2, meanwhile studying on creating a YoLo version.  
-    - [x] A* path planning project  
-    - [x] OpenCV: Finished serveral small scale project using OpenCV.  
-    - [ ] Handwritten Equations to LaTex: Migrating to TF2 version, meanwhile seeking datasets.   
-    - [ ] Self Driving Car using OpenCV and Neural Networks: debugging   
->>>>>>> 2b40a7a4b605510b57bc6749d3dd3cce9f6a60a7
