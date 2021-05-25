@@ -1,4 +1,5 @@
-# This is a implementation of AI Video Dubs
+# This is a study of AI Video Dubs with Google Cloud Platform APIs
+ORI SOURCE: `https://daleonai.com/translate-dub-videos-with-ml`
 
 ### Tech Stacks:
 1. transcrible audio to text with Google Speech-to-Text API;  

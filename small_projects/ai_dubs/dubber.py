@@ -265,7 +265,93 @@ def dubber(video, output_dir, source_lang, target_langs=[], storage_bucket=None,
         audio_decoder(video, fn)
         print(f"Wrote {fn}")
     
+    if not f"transcript.json" in output_files:
+        storage_bucket = storage_bucket if storage_bucket else os.environ['STORAGE_BUCKET']
+        if not storage_bucket:
+            raise Exception("Specify variable STORAGE_BUCKET in .env or as an param")
+        
+        print("Transcribing audio")
+        print("Uploading to the cloud...")
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(storage_bucket)
+
+        tempfile = os.path.join("tmp", str(uuid.uuid4()) + ".wav")
+        blob = bucket.blob(tempfile)
+        # temporary upload audio file to the cloud
+        blob.upload_from_filename(os.path.join(output_dir, base_name+".wav"), content_type="audio/wav")
+
+        print("Transcribing...")
+        transcripts = get_transcripts_json(os.path.join(
+            "gs://", storage_bucket, tempfile), 
+            source_lang,
+            phraseHints=phrase_hints,
+            speakerCount=speaker_count)
+        json.dump(transcripts, open(os.path.join(output_dir, "transcript.json"), 'w'))
+
+        sentences = sentence_parser_with_speaker(transcripts, source_lang)
+        fn = os.path.join(output_dir, base_name+".json")
+        with open(fn, "w") as f:
+            json.dump(sentences, f)
+        print(f"Wrote {fn}")
+        print("Deleting cloud file...")
+        blob.delete()
+
+    srt_path = os.path.join(output_dir, "subtitles.srt") if srt else None
+    if srt:
+        transcripts = json.load(open(os.path.join(output_dir, "transcript.json")))
+        subtitles = convert_to_srt(transcripts)
+        with open(srt_path, "w") as f:
+            f.write(subtitles)
+        print(f"Wrote srt subtitles to {os.path.join(output_dir, 'subtitles.srt')}")
     
+    sentences = json.load(open(os.path.join(output_dir, base_name+".json")))
+    sentence = sentences[0]
+
+    if not no_translate:
+        for lang in target_langs:
+            print(f"Translating to {lang}...")
+            for sentence in sentences:
+                sentence[lang] = text_translator(sentence[source_lang], lang, source_lang)
+        
+        # write to json
+        fn = os.path.join(output_dir, base_name+".json")
+        with open(fn, "w") as f:
+            json.dump(sentences, f)
+    
+    audio_dir = os.path.join(output_dir, "audioClips")
+    if not "audioClips" in output_files:
+        os.mkdir(audio_dir)
+    
+    # whether dub the source lang
+    if dub_src:
+        target_langs += [source_lang]
+
+    for lang in target_langs:
+        language_dir = os.path.join(audio_dir, lang)
+        if os.path.exists(language_dir):
+            if not gen_audio:
+                continue
+            shutil.rmtree(language_dir)
+        os.mkdir(language_dir)
+        print(f"Synthesizing audio for {lang}...")
+        for i, sentence in enumerate(sentences):
+            voice_name = voices[lang] if lang in voices else None
+            audio = speaking_duration(
+                sentence[lang],
+                lang, 
+                sentence['end_time']-sentence['start_time'],
+                voice_name=voice_name)
+            with open(os.path.join(language_dir, f"{i}.mp3"), 'wb') as f:
+                f.write(audio)
+
+    dubbed_dir = os.path.join(output_dir, "dubbedVideos")
+    if not "dubbedVideos" in output_files:
+        os.mkdir(dubbed_dir)
+
+    for lang in target_langs:
+        print(f"Dubbing audio for {lang}...")
+        outFile = os.path.join(dubbed_dir, lang+".mp4")
+        stitch_audio(sentences, os.path.join(audio_dir,lang), video, outFile, srt_path=srt_path)
     
     print('DONE!')
 
