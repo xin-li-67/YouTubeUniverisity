@@ -30,3 +30,5 @@ What I learn in my spare time and What I'm interested in with the help on variou
     -[x] ~~Handwritten Equations to LaTex: Migrating to TF2 version, meanwhile failed to find appropriate datasets.~~   
     -[x] Self Driving Car using OpenCV and Neural Networks: Finished the Image Processing solution, working on NN solution.   
     -[x] AI Video Dubs  
+6. Nlp Series:
+    -[ ] AI Wakeup Services
