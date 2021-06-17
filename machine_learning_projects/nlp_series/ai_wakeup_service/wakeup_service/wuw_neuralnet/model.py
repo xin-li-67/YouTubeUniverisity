@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 
+# LSTM based wuw model
 class LSTMWakeupWord(nn.Module):
     def __init__(self, num_classes, feature_size, hidden_size,
                  num_layers, dropout, bidirectional, device='cpu'):

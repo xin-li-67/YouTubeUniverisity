@@ -3,6 +3,8 @@ import argparse
 
 from model import LSTMWakeupWord
 
+# freeze and optize the model after training
+
 def trace(model):
     model.eval()
     x = torch.rand(80, 1, 40)

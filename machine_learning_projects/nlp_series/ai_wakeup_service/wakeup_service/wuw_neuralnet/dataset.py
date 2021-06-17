@@ -5,6 +5,8 @@ import pandas as pd
 
 from sonopy import power_spec, mel_spec, mfcc_spec, filterbanks
 
+# prepare the data
+
 class MFCC(nn.Module):
     def __init__(self, sample_rate, fft_size=400, window_stride=(400,200), num_filt=40, num_coeffs=40):
         super(MFCC, self).__init__()
@@ -80,9 +82,6 @@ class SpecAugment(nn.Module):
             return self.policy1(x)
         return self.policy2(x)
 
-def get_featurizer(sample_rate):
-    return MFCC(sample_rate=sample_rate)
-
 class WakeWordData(torch.utils.data.Dataset):
     """Load and process wakeword data"""
 
@@ -120,6 +119,9 @@ class WakeWordData(torch.utils.data.Dataset):
 
 
 rand_cut = RandomCut(max_cut=10)
+
+def get_featurizer(sample_rate):
+    return MFCC(sample_rate=sample_rate)
 
 def collate_fn(data):
     """Batch and pad wakeword data"""
