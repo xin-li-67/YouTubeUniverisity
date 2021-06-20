@@ -1,10 +1,10 @@
-from datetime import time
 import torch
 import torchaudio
 import numpy as np
 import pandas as pd
 import torch.nn as nn
-from torchaudio.transforms import Spectrogram
+
+from utils import TextProcess
 
 class SpecAugment(nn.Module):
     def __init__(self, rate, policy=3, freq_mask=15, time_mask=35):

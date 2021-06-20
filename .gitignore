@@ -13,6 +13,7 @@ machine_learning_projects/license_plates_detector/log/
 
 # cache
 __pycache__
+.DS_Store
 
 # desktop
 .vscode
