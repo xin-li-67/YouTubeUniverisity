@@ -2,7 +2,7 @@
 import sklearn
 import pandas as pd
 
-from sklearn import preprocessing
+from sklearn import preprocessing, model_selection
 from sklearn.neighbors import KNeighborsClassifier
 
 # prepare the data
@@ -22,7 +22,7 @@ cls = le.fit_transform(list(data["class"]))
 x = list(zip(buying, maint, door, persons, lug_boot, safety))
 y = list(cls)
 # split data
-x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
+x_train, x_test, y_train, y_test = model_selection.train_test_split(x, y, test_size=0.1)
 
 # train a KNN classifier
 model = KNeighborsClassifier(n_neighbors=9)

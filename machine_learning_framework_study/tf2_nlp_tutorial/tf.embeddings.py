@@ -1,23 +1,19 @@
 import io
 import matplotlib.pyplot as plt
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
 import tensorflow_datasets as tfds
 
-####---------####
-####EMBEDDING####
-####---------####
+from tensorflow import keras
+from tensorflow.keras import layers
 
+
+# # embedding
 # embedding_layer = layers.Embedding(1000, 5)
 # result = embedding_layer(tf.constant([1,2,3]))
-
 # print(result.numpy())
 # print(result.numpy().shape)
 
 def get_batch_data():
-    (train_data, test_data), info = tfds.load('imdb_reviews/subwords8k', split=(tfds.Split.TRAIN, tfds.Split.TEST), with_info=True, as_supervised=True)
-
+    (train_data, test_data), info = tfds.load('imdb_reviews/subwords8k', split=(tfds.Split.TRAIN,tfds.Split.TEST), with_info=True, as_supervised=True)
     encoder = info.features['text'].encoder
     # print(encoder.subwords[:20])
 
@@ -43,7 +39,7 @@ def plot_history(history):
     history_dict = history.history
     acc = history_dict['accuracy']
     val_acc = history_dict['val_accuracy']
-    epochs = range(1, len(acc) + 1)
+    epochs = range(1, len(acc)+1)
 
     plt.figure(figsize=(12,9))
     plt.plot(epochs, acc, 'bo', label='Training acc')
@@ -70,7 +66,6 @@ def retrieve_embeddings(model, encoder):
 
 train_batches, test_batches, encoder = get_batch_data()
 model = get_model(encoder)
-
 history = model.fit(train_batches, epochs=10, validation_data=test_batches, validation_steps=20)
 
 # plot_history(history)

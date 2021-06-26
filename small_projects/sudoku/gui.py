@@ -1,13 +1,13 @@
 # sudoku gui.py
-import pygame
 import time
+import pygame
 
 from solver import *
 
 pygame.font.init()
 
 class Grid:
-    # To change the starting board change this
+    # initial board
     board = [
         [7, 8, 0, 4, 0, 0, 1, 2, 0],
         [6, 0, 0, 0, 7, 5, 0, 0, 9],
@@ -51,23 +51,24 @@ class Grid:
         self.cubes[row][col].set_temp(val)
 
     def draw(self, win):
-        # Draw Grid Lines
+        # draw Grid Lines
         gap = self.width / 9
-        for i in range(self.rows+1):
+        for i in range(self.rows + 1):
             if i % 3 == 0 and i != 0:
                 thick = 4
             else:
                 thick = 1
+            
             pygame.draw.line(win, (0,0,0), (0, i*gap), (self.width, i*gap), thick)
-            pygame.draw.line(win, (0, 0, 0), (i * gap, 0), (i * gap, self.height), thick)
+            pygame.draw.line(win, (0,0,0), (i*gap, 0), (i*gap, self.height), thick)
 
-        # Draw Cubes
+        # draw Cubes
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].draw(win)
 
     def select(self, row, col):
-        # Reset all other
+        # reset all other
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].selected = False
@@ -123,7 +124,7 @@ class Cube:
             text = fnt.render(str(self.temp), 1, (128,128,128))
             win.blit(text, (x+5, y+5))
         elif not(self.value == 0):
-            text = fnt.render(str(self.value), 1, (0, 0, 0))
+            text = fnt.render(str(self.value), 1, (0,0,0))
             win.blit(text, (x + (gap/2 - text.get_width()/2), y + (gap/2 - text.get_height()/2)))
 
         if self.selected:
@@ -137,25 +138,25 @@ class Cube:
 
 def redraw_window(win, board, time, strikes):
     win.fill((255,255,255))
-    # Draw time
+    # draw time
     fnt = pygame.font.SysFont("comicsans", 40)
     text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
-    win.blit(text, (540 - 160, 560))
-    # Draw Strikes
-    text = fnt.render("X " * strikes, 1, (255, 0, 0))
+    win.blit(text, (540-160, 560))
+    # draw Strikes
+    text = fnt.render("X " * strikes, 1, (255,0,0))
     win.blit(text, (20, 560))
-    # Draw grid and board
+    # draw grid and board
     board.draw(win)
 
 def format_time(secs):
-    sec = secs%60
-    minute = secs//60
+    sec = secs % 60
+    minute = secs // 60
     # hour = minute//60
     mat = " " + str(minute) + ":" + str(sec)
     return mat
 
 def main():
-    win = pygame.display.set_mode((540,600))
+    win = pygame.display.set_mode((540, 600))
     pygame.display.set_caption("Sudoku")
     board = Grid(9, 9, 540, 540)
     key = None
@@ -164,7 +165,6 @@ def main():
     strikes = 0
     while run:
         play_time = round(time.time() - start)
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False

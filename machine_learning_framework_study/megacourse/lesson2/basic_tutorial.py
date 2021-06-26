@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 from tensorflow import keras
 
-# prepare the data
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
 data = keras.datasets.fashion_mnist
@@ -11,7 +10,6 @@ data = keras.datasets.fashion_mnist
 train_images = train_images / 255.0
 test_images = test_images / 255.0
 
-# create the model
 model = keras.Sequential([
     keras.layers.Flatten(input_shape=(28,28)),
     keras.layers.Dense(128, activation='relu'),
@@ -26,7 +24,6 @@ model.fit(train_images, train_labels, epochs=5)
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 print("Test accuracy: ", test_acc)
 
-# predict
 predictions = model.predict(test_images)
 plt.figure(figsize=(5,5))
 for i in range(5):
