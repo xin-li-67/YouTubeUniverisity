@@ -1,21 +1,21 @@
 # run the trained flappy bird game in a ide
 # use pygame and neat-python
-
-import pygame
-import random
 import os
 import time
 import neat
+import pygame
+import random
 import pickle
+
 pygame.font.init() # init font
 
 # IDE
 WIN_WIDTH = 500
 WIN_HEIGHT = 800
 FLOOR = 730
+DRAW_LINES = False
 STAT_FONT = pygame.font.SysFont("comicsans", 50)
 END_FONT = pygame.font.SysFont("comicsans", 70)
-DRAW_LINES = False
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pygame.display.set_caption("Flappy Bird")
 
@@ -32,8 +32,8 @@ class Bird:
     The Flappy Bird
     '''
     IMGS = BIRD_IMGS
-    MAX_ROTATION = 25 # rotation degree
-    ROT_VEL = 20 # rotation velocity
+    MAX_ROTATION = 25   # rotation degree
+    ROT_VEL = 20        # rotation velocity
     ANIMATION_TIME = 5
 
     def __init__(self, x, y):
@@ -137,10 +137,8 @@ class Pipe():
         # where the top and bottom of the pipe is
         self.top = 0
         self.bottom = 0
-
         self.PIPE_TOP = pygame.transform.flip(PIPE_IMG, False, True)
         self.PIPE_BOTTOM = PIPE_IMG
-
         self.passed = False
         self.set_height()
     
@@ -174,13 +172,11 @@ class Pipe():
         bird_mask = bird.get_mask()
         top_mask = pygame.mask.from_surface(self.PIPE_TOP)
         bottom_mask = pygame.mask.from_surface(self.PIPE_BOTTOM)
-        
         top_offset = (self.x - bird.x, self.top - round(bird.y))
         bottom_offset = (self.x - bird.x, self.bottom - round(bird.y))
 
         b_point = bird_mask.overlap(bottom_mask, bottom_offset)
         t_point = bird_mask.overlap(top_mask, top_offset)
-
         if b_point or t_point:
             return True
 
@@ -205,10 +201,8 @@ class Base():
         '''
         self.x1 -= self.VEL
         self.x2 -= self.VEL
-
         if self.x1 + self.WIDTH < 0:
             self.x1 = self.x2 + self.WIDTH
-
         if self.x2 + self.WIDTH < 0:
             self.x2 = self.x1 + self.WIDTH
     

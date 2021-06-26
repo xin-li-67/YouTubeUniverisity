@@ -1,6 +1,4 @@
-import tensorflow as tf
 from tensorflow import keras
-import numpy
 
 # prepare the data
 imdb = keras.datasets.imdb

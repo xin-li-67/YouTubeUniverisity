@@ -1,15 +1,16 @@
 # tflearn only supports tf1.x, can't run on 2.x
 import nltk
-from nltk.stem.lancaster import LancasterStemmer
-stemmer = LancasterStemmer()
-nltk.download('punkt')
-
+import json
 import numpy
+import random
+import pickle
 import tflearn
 import tensorflow as tf
-import random
-import json
-import pickle
+
+from nltk.stem.lancaster import LancasterStemmer
+
+stemmer = LancasterStemmer()
+nltk.download('punkt')
 
 with open("intents.json") as file:
     data = json.load(file)
@@ -36,7 +37,6 @@ except:
 
     words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = sorted(list(set(words)))
-
     labels = sorted(labels)
 
     training = []
@@ -46,9 +46,7 @@ except:
 
     for x, doc in enumerate(docs_x):
         bag = []
-
         wrds = [stemmer.stem(w.lower()) for w in doc]
-
         for w in words:
             if w in wrds:
                 bag.append(1)
@@ -60,7 +58,6 @@ except:
 
         training.append(bag)
         output.append(output_row)
-
 
     training = numpy.array(training)
     output = numpy.array(output)
@@ -76,7 +73,6 @@ net = tflearn.fully_connected(net, 8)
 net = tflearn.fully_connected(net, 8)
 net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
 net = tflearn.regression(net)
-
 model = tflearn.DNN(net)
 
 # save & load the model
@@ -88,10 +84,8 @@ except:
 
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
-
     s_words = nltk.word_tokenize(s)
     s_words = [stemmer.stem(word.lower()) for word in s_words]
-
     for se in s_words:
         for i, w in enumerate(words):
             if w == se:

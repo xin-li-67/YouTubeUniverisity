@@ -1,10 +1,9 @@
 # supervised learning algorithm
 import sklearn
-from sklearn.utils import shuffle
-from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
-import numpy as np
-from sklearn import linear_model, preprocessing
+
+from sklearn import preprocessing
+from sklearn.neighbors import KNeighborsClassifier
 
 # prepare the data
 data = pd.read_csv("./datasets/car_dataset/car.data")
@@ -28,7 +27,6 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y
 # train a KNN classifier
 model = KNeighborsClassifier(n_neighbors=9)
 model.fit(x_train, y_train)
-
 acc = model.score(x_test, y_test)
 print(acc)
 

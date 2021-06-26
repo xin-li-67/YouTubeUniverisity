@@ -1,9 +1,9 @@
 # supervised learning algorithm
 import sklearn
-from sklearn import datasets
+
 from sklearn import svm
 from sklearn import metrics
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn import datasets
 
 cancer = datasets.load_breast_cancer()
 

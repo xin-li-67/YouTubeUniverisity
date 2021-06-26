@@ -1,12 +1,12 @@
 # supervised learning algorithm
-import pandas as pd
-import numpy as np
-import sklearn
-from sklearn import linear_model
-from sklearn.utils import shuffle
-import matplotlib.pyplot as plt
-from matplotlib import style
 import pickle
+import sklearn
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from matplotlib import style
+from sklearn import linear_model
 
 style.use("ggplot")
 
