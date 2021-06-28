@@ -1,6 +1,6 @@
 import cv2
-import numpy as np
 import utlis
+import numpy as np
 
 # Initialize
 webCapFeed = True

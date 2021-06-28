@@ -3,7 +3,8 @@ import pytesseract
 
 path = 'test.png'
 hsv = [0, 65, 59, 255, 0, 255]
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/4.1.1'
 
 img = cv2.imread(path)
 imgResult = detect_color(img, hsv)

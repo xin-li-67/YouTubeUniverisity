@@ -3,9 +3,9 @@ import pytesseract
 import numpy as np
 
 from PIL import ImageGrab
-import time
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCT\\tesseract.ext'
+pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/4.1.1'
+# pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCT\\tesseract.ext'
 img = cv2.imread('1.png')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 

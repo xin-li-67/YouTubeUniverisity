@@ -1,6 +1,6 @@
 import cv2
-import numpy as np
 import pickle
+import numpy as np
 
 # Params
 frameWidth= 640

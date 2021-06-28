@@ -1,7 +1,7 @@
+import os
 import cv2
 import numpy as np
 import pytesseract
-import os
 
 # Initialize
 per = 25
@@ -16,7 +16,8 @@ roi = [[(98, 984), (680, 1074), 'text', 'Name'],
        [(110, 1598), (676, 1680), 'text', 'City'],
        [(748, 1592), (1328, 1686), 'text', 'Country']]
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/4.1.1'
 
 imgQuery = cv2.imread('Query.png')
 h, w, c = imgQuery.shape

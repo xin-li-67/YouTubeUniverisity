@@ -1,14 +1,14 @@
+import os
 import cv2
 import numpy as np
-import os
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Conv2D, Dense, MaxPooling2D, Dropout, Flatten
 
 import pickle

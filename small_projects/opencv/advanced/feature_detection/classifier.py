@@ -1,6 +1,6 @@
+import os
 import cv2
 import numpy as np
-import os
  
 path = 'ImagesQuery'
 orb = cv2.ORB_create(nfeatures=1000)

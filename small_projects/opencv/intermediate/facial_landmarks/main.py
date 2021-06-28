@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+
 # Use dlib to detect a face and find different facial landmarks on an image
 import dlib
 

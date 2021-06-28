@@ -1,8 +1,9 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+import solver
 
 from utils import *
-import solver
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 ########################################################################
 image = "resources/2.jpg"

@@ -1,7 +1,6 @@
-import cv2
 import os
+import cv2
 
-# Initialize
 mainFolder = 'Images'
 myFolders = os.listdir(mainFolder)
 
@@ -9,7 +8,6 @@ for folder in myFolders:
     path = mainFolder + '/' + folder
     images = []
     myList = os.listdir(path)
-    
     print(f'Total umber of images detected here is {len(myList)}')
 
     for img in myList:
