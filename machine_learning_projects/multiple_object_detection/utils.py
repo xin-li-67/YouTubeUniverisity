@@ -1,6 +1,6 @@
+import cv2
 import numpy as np
 import tensorflow as tf
-import cv2
 
 from absl import logging
 from seaborn import color_palette

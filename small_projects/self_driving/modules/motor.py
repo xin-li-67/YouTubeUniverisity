@@ -1,11 +1,11 @@
 # for letting the raspberry pi car to move according to the joystick or final main script
 # RPI is the modul controlling the pi
 import RPi.GPIO as GPIO
+
 from time import sleep
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-
 
 class Motor():
     def __init__(self, EnaA, In1A, In2A, EnaB, In1B, In2B):
@@ -17,10 +17,10 @@ class Motor():
         self.In2B = In2B
         GPIO.setup(self.EnaA, GPIO.OUT);GPIO.setup(self.In1A, GPIO.OUT);GPIO.setup(self.In2A, GPIO.OUT)
         GPIO.setup(self.EnaB, GPIO.OUT);GPIO.setup(self.In1B, GPIO.OUT);GPIO.setup(self.In2B, GPIO.OUT)
-        self.pwmA = GPIO.PWM(self.EnaA, 100);
-        self.pwmB = GPIO.PWM(self.EnaB, 100);
-        self.pwmA.start(0);
-        self.pwmB.start(0);
+        self.pwmA = GPIO.PWM(self.EnaA, 100)
+        self.pwmB = GPIO.PWM(self.EnaB, 100)
+        self.pwmA.start(0)
+        self.pwmB.start(0)
         self.mySpeed = 0
 
     def move(self, speed=0.5, turn=0, t=0):
@@ -52,8 +52,8 @@ class Motor():
         sleep(t)
 
     def stop(self, t=0):
-        self.pwmA.ChangeDutyCycle(0);
-        self.pwmB.ChangeDutyCycle(0);
+        self.pwmA.ChangeDutyCycle(0)
+        self.pwmB.ChangeDutyCycle(0)
         self.mySpeed = 0
         sleep(t)
 

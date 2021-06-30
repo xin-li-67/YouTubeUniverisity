@@ -1,4 +1,5 @@
 import tensorflow as tf
+
 from absl.flags import FLAGS
 
 @tf.function

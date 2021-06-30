@@ -1,11 +1,11 @@
-# for triggering the modules
-import webcam as wm
-import data as dm
-import joystick as jm
-import motor as mm
-
 import cv2
+
 from time import sleep
+# for triggering the modules
+import data as dm
+import motor as mm
+import webcam as wm
+import joystick as jm
 
 maxThrottle = 0.25
 motor = mm.Motor(2, 3, 4, 17, 22, 27)

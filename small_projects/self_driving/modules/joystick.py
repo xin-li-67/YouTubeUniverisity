@@ -1,5 +1,6 @@
 # for using game console joystick to collect data
 import pygame
+
 from time import sleep
 
 pygame.init()
@@ -10,7 +11,6 @@ buttons = {'x': 0, 'o': 0, 't': 0, 's': 0,
            'share': 0, 'options': 0,
            'axis1': 0., 'axis2': 0., 'axis3': 0., 'axis4': 0.}
 axiss = [0., 0., 0., 0., 0., 0.]
-
 
 def getJS(name=''):
     global buttons
