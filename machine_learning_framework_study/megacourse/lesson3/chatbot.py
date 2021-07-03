@@ -1,13 +1,15 @@
-# tflearn only supports tf1.x, can't run on 2.x
+# switched from tflearn to tf.keras for tf.v2
 import nltk
 import json
 import numpy
 import random
 import pickle
-import tflearn
+# import tflearn
 import tensorflow as tf
 
 from nltk.stem.lancaster import LancasterStemmer
+from tensorflow import keras
+from tensorflow.python.keras.layers.core import Dense
 
 stemmer = LancasterStemmer()
 nltk.download('punkt')
@@ -27,9 +29,9 @@ except:
 
     for intent in data["intents"]:
         for pattern in intent["patterns"]:
-            wrds = nltk.word_tokenize(pattern)
-            words.extend(wrds)
-            docs_x.append(wrds)
+            temp = nltk.word_tokenize(pattern)
+            words.extend(temp)
+            docs_x.append(temp)
             docs_y.append(intent["tag"])
 
         if intent["tag"] not in labels:
@@ -46,9 +48,9 @@ except:
 
     for x, doc in enumerate(docs_x):
         bag = []
-        wrds = [stemmer.stem(w.lower()) for w in doc]
+        temp = [stemmer.stem(w.lower()) for w in doc]
         for w in words:
-            if w in wrds:
+            if w in temp:
                 bag.append(1)
             else:
                 bag.append(0)
@@ -66,21 +68,31 @@ except:
         pickle.dump((words, labels, training, output), f)
 
 # create the model
-tf.compat.v1.reset_default_graph()
+# tf.compat.v1.reset_default_graph()
 
-net = tflearn.input_data(shape=[None, len(training[0])])
-net = tflearn.fully_connected(net, 8)
-net = tflearn.fully_connected(net, 8)
-net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
-net = tflearn.regression(net)
-model = tflearn.DNN(net)
+# net = tflearn.input_data(shape=[None, len(training[0])])
+# net = tflearn.fully_connected(net, 8)
+# net = tflearn.fully_connected(net, 8)
+# net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
+# net = tflearn.regression(net)
+# model = tflearn.DNN(net)
+
+model = tf.keras.models.Sequential()
+model.add(tf.keras.Input(shape=len(training[0])))
+model.add(tf.keras.layers.Dense(8))
+model.add(tf.keras.layers.Dense(8))
+model.add(tf.keras.layers.Dense(len(output[0]), activation="softmax"))
+model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
 
 # save & load the model
 try:
-    model.load("model.tflearn")
+    tf.keras.models.load_model("./model_temp")
+    # model.load("model.tflearn")
 except:
-    model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-    model.save("model.tflearn")
+    model.fit(training, output, epochs=1000, batch_size=8)
+    tf.keras.models.save_model(model, "./model_temp")
+    # model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+    # model.save("model.tflearn")
 
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
@@ -89,7 +101,7 @@ def bag_of_words(s, words):
     for se in s_words:
         for i, w in enumerate(words):
             if w == se:
-                bag[i].append(1)
+                bag[i] = 1
     
     return numpy.array(bag)
 
