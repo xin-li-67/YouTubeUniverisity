@@ -6,15 +6,15 @@ What I learn in my spare time and What I'm interested in with the help on variou
     - [x] tf2_tutorial: TensorFlow2 Study.  
     - [x] tf2_nlp_tutorial: More detailed NLP tutorial.  
     - [x] megacourse: YouTube machine learning and Tensorflow study including a Flappy Bird AI game.  
-    - [ ] pytorch  
-    - [-] yolov3_tf2: TF2 implementation on YoLov3 and TFX Serving.
+    - [ ] ~~pytorch~~
+    - [-] ~~yolov3_tf2: TF2 implementation on YoLov3 and TFX Serving.~~
 2. ML&DL Projects Implementation:  
     - [x] YOLOv3 small project 1: YOLOv3 with OpenCV on real-time object detection.  
     - [x] YOLOv3 small project 2: Car license plates detection using TF2 (YOLOv4 weights also included).  
     - [x] YOLOv3 small project 3: Multiple object detection and tracking with TF2 and Deep SORT.  
     - [x] YOLOv4 small project: YoloV4 Tutorial on CoLab.  
     - [x] Basic ML Algorithm Deployment: Finished a basic income classifier deployment with basic A/B test using Django and Docker.
-    - [-] Docker Distributed Training
+    - [-] ~~Docker Distributed Training~~
 3. Fullstack frameworks&API study:  
     - [x] Django: Done with stuies, started to work on full stack projects.  
     - [x] Flask: Doen with basic studies. Will create hands-on projects.  
@@ -22,14 +22,14 @@ What I learn in my spare time and What I'm interested in with the help on variou
     - [x] REST: a very basic Flask REST API to mimic a movie website with a SQLite3 database.  
 4. Fullstack projects:  
     - [x] xinsite: Personal reading notes post blog which hosted on Heroku (DONE) and Google Cloud Platform (On-going).  
-    - [ ] Personal Portfolio: My personal full stack website on Heroku with access to GitHub, etc.  
+    - [ ] ~~Personal Portfolio: My personal full stack website on Heroku with access to GitHub, etc.~~  
 5. Coding&Algorithms small projects:  
-    -[x] sudoku: sudoku algorithm implementation with and without a GUI.  
-    -[x] Face detection project (opencv): Finished in the OpenCV intermediate level collection.  
-    -[-] Realtime parking lot detector (opencv & mask r-cnn): Migrating to TF2, meanwhile studying on creating a YOLO version.  
-    -[x] A* path planning project  
-    -[x] OpenCV: Finished serveral small scale project using OpenCV.  
-    -[x] Self Driving Car using OpenCV and Neural Networks: Finished the Image Processing solution, working on NN solution.   
-    -[x] AI Video Dubs  
+    - [x] sudoku: sudoku algorithm implementation with and without a GUI.  
+    - [x] Face detection project (opencv): Finished in the OpenCV intermediate level collection.  
+    - [-] ~~Realtime parking lot detector (opencv & mask r-cnn): Migrating to TF2, meanwhile studying on creating a YOLO version.~~  
+    - [x] A* path planning project  
+    - [x] OpenCV: Finished serveral small scale project using OpenCV.  
+    - [x] Self Driving Car using OpenCV and Neural Networks: Finished the Image Processing solution, working on NN solution.   
+    - [x] AI Video Dubs  
 6. Nlp Series:
-    -[ ] AI Wakeup Services
+    - [ ] ~~AI Wakeup Services~~
