@@ -39,7 +39,7 @@ class Spot:
     
     def is_barrier(self):
 	    return self.color == BLACK
-
+    
     def is_start(self):
         return self.color == ORANGE
 
